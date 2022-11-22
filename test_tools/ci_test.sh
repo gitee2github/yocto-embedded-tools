@@ -287,11 +287,12 @@ function set_param() {
 }
 
 function main() {
-    # 环境准备
-    if [ -e /opt/buildtools/nativesdk/environment-setup-x86_64-pokysdk-linux ]; then
-        source /opt/buildtools/nativesdk/environment-setup-x86_64-pokysdk-linux
-        export MUGEN_QEMU_ACL_DIR="/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-pokysdk-linux/etc/qemu/"
+    br_nf_iptab_num=1
+    if [ -e /proc/sys/net/bridge/bridge-nf-call-iptables ]; then
+        br_nf_iptab_num=$(sudo cat /proc/sys/net/bridge/bridge-nf-call-iptables)
+        echo 0 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
     fi
+
     set_param "$@"
 
     run_test_dir="${TEST_WORK_DIR}/test_run_dir_${BUILD_ARCH}_${IMAGE_TYPE}"
@@ -359,6 +360,8 @@ EOF
 
     run_test
     test_result_ana
+
+    echo ${br_nf_iptab_num} | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
 
     exit $exitCode
 }
