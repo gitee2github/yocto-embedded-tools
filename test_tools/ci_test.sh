@@ -361,7 +361,9 @@ EOF
     run_test
     test_result_ana
 
-    echo ${br_nf_iptab_num} | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
+    if [ -e /proc/sys/net/bridge/bridge-nf-call-iptables ]; then
+        echo ${br_nf_iptab_num} | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
+    fi
 
     exit $exitCode
 }
