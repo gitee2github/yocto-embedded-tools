@@ -1,8 +1,0 @@
-{
-    "device_name": "openEuler",
-    "device_company": "hisilicon",
-    "target_os": "ohos",
-    "target_cpu": "arm64",
-    "kernel_version": "",
-    "device_build_path": "device/hisilicon/build"
-}
