@@ -8,9 +8,7 @@ function delete_dir() {
 function do_patch() {
 	pushd $1
 	if [ $1 = "isl" ];then
-		tar xf $1-0.14.tar.xz
-		tar xf $1-0.16.1.tar.xz
-		patch -p1 < *.patch
+		tar xf $1-0.24.tar.gz
 	elif [ $1 = "zlib" ];then
 		tar xf *.tar.*
 	else
