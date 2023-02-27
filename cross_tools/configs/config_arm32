@@ -375,7 +375,7 @@ CT_BINUTILS_PKG_NAME="binutils"
 # CT_BINUTILS_SRC_RELEASE is not set
 # CT_BINUTILS_SRC_DEVEL is not set
 CT_BINUTILS_SRC_CUSTOM=y
-CT_BINUTILS_CUSTOM_LOCATION="/usr1/yocto-embedded-tools/cross_tools/open_source/binutils/binutils-2.38"
+CT_BINUTILS_CUSTOM_LOCATION="/usr1/yocto-embedded-tools/cross_tools/open_source/binutils/binutils-2.37"
 CT_BINUTILS_PATCH_GLOBAL=y
 # CT_BINUTILS_PATCH_BUNDLED is not set
 # CT_BINUTILS_PATCH_LOCAL is not set
