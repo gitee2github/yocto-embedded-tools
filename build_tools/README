@@ -1,9 +1,2 @@
 yocto-embedded-tools/build_tools: Maintain stable and unchangeable tools 
 
-[update-rc.d]
-description: manage symlinks in /etc/rcN.d
-from: git://git.yoctoproject.org/update-rc.d;branch=master
-
-[yocto-kernel-tools]
-description: tools for managing Yocto Project style branched kernels
-from: git://git.yoctoproject.org/yocto-kernel-tools.git;branch=master
