@@ -8,7 +8,9 @@ function delete_dir() {
 function do_patch() {
 	pushd $1
 	if [ $1 = "isl" ];then
-		tar xf $1-0.24.tar.gz
+		tar xf $1-0.14.tar.xz
+		tar xf $1-0.16.1.tar.xz
+		patch -p1 < *.patch
 	elif [ $1 = "zlib" ];then
 		tar xf *.tar.*
 	else
@@ -16,11 +18,7 @@ function do_patch() {
         echo "$1: do_unpack for of $PKG..."
 		tar xf *.tar.*
         echo "make patchlist of $1..."
-		cat *.spec | grep "Patch" | grep -v "#" |grep "\.patch" | awk -F ":" '{print $2}' > $1-patchlist
-	    if [ $1 = "gcc" ];then
-            # current patches can't apply, it cause --sysroot bugs
-            sed -i '/0041-Backport-Register-sysroot-in-the-driver-switches-tab.patch/d' $1-patchlist
-        fi
+		cat *.spec | grep ".*atch.*:" | grep -v "#" |grep "\.patch" | awk -F ":" '{print $2}' > $1-patchlist
         ls ${OE_PATCH_DIR}/ | grep "^$1" > $1-patchlist-oe || true
 		pushd ${PKG%%.tar.*}
 		for i in `cat ../$1-patchlist`
